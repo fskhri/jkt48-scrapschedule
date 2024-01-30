@@ -12,3 +12,7 @@ After you have installed the dependencies, you can run the following command to 
 1. Clone this project
 2. npm install / yarn install
 3. npm run dev / yarn run dev
+
+# Screenshoot
+
+![image](https://github.com/fskhri/jkt48-scrapschedule/assets/41115223/e928aee7-7009-404d-9d3a-d21d13952eec)
