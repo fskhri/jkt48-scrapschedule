@@ -54,7 +54,7 @@ const generateEmbed = (title, schedules) => {
     for (const schedule of schedules) {
         embed.fields.push({
             name: `ID: ${schedule.id}`,
-            value: `Day: ${schedule.day}\nShow: ${schedule.show}\nLink: [Schedule Link](${schedule.link})`,
+            value: `🗓️ Day: ${schedule.day}\n⏰ Show: ${schedule.show}\nLink: [Schedule Link](${schedule.link})`,
         });
     }
 
