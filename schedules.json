@@ -1,0 +1,104 @@
+[
+  {
+    "id": "theater_2638",
+    "day": "5(Jumat)",
+    "show": "19:00 Ingin Bertemu",
+    "link": "https://jkt48.com/theater/schedule/id/2638?lang=id"
+  },
+  {
+    "id": "theater_2635",
+    "day": "6(Sabtu)",
+    "show": "14:00 Aturan Anti Cinta",
+    "link": "https://jkt48.com/theater/schedule/id/2635?lang=id"
+  },
+  {
+    "id": "theater_2636",
+    "day": "7(Minggu)",
+    "show": "14:00 Cara Meminum Ramune",
+    "link": "https://jkt48.com/theater/schedule/id/2636?lang=id"
+  },
+  {
+    "id": "theater_2637",
+    "day": "7(Minggu)",
+    "show": "19:00 Ingin Bertemu",
+    "link": "https://jkt48.com/theater/schedule/id/2637?lang=id"
+  },
+  {
+    "id": "event_430",
+    "day": "10(Rabu)",
+    "show": "12:30 JKT48 OFC Event FUN ON BOARD #2 - Sesi 1",
+    "link": "https://jkt48.com/event/schedule/id/430?lang=id"
+  },
+  {
+    "id": "event_431",
+    "day": "10(Rabu)",
+    "show": "15:00 JKT48 OFC Event FUN ON BOARD #2 - Sesi 2",
+    "link": "https://jkt48.com/event/schedule/id/431?lang=id"
+  },
+  {
+    "id": "theater_2639",
+    "day": "12(Jumat)",
+    "show": "19:00 Ingin Bertemu",
+    "link": "https://jkt48.com/theater/schedule/id/2639?lang=id"
+  },
+  {
+    "id": "calendar_2024113",
+    "day": "13(Sabtu)",
+    "show": "FESTIVE FEST",
+    "link": "https://jkt48.com/calendar/list/y/2024/m/1/d/13?lang=id"
+  },
+  {
+    "id": "theater_2643",
+    "day": "13(Sabtu)",
+    "show": "19:00 Aturan Anti Cinta",
+    "link": "https://jkt48.com/theater/schedule/id/2643?lang=id"
+  },
+  {
+    "id": "theater_2642",
+    "day": "14(Minggu)",
+    "show": "19:00 Cara Meminum Ramune",
+    "link": "https://jkt48.com/theater/schedule/id/2642?lang=id"
+  },
+  {
+    "id": "theater_2644",
+    "day": "19(Jumat)",
+    "show": "19:00 Aturan Anti Cinta",
+    "link": "https://jkt48.com/theater/schedule/id/2644?lang=id"
+  },
+  {
+    "id": "theater_2645",
+    "day": "20(Sabtu)",
+    "show": "15:00 Cara Meminum Ramune",
+    "link": "https://jkt48.com/theater/schedule/id/2645?lang=id"
+  },
+  {
+    "id": "theater_2646",
+    "day": "21(Minggu)",
+    "show": "14:00 Ingin Bertemu",
+    "link": "https://jkt48.com/theater/schedule/id/2646?lang=id"
+  },
+  {
+    "id": "theater_2648",
+    "day": "21(Minggu)",
+    "show": "19:00 Pajama Drive",
+    "link": "https://jkt48.com/theater/schedule/id/2648?lang=id"
+  },
+  {
+    "id": "theater_2649",
+    "day": "25(Kamis)",
+    "show": "19:00 Aturan Anti Cinta",
+    "link": "https://jkt48.com/theater/schedule/id/2649?lang=id"
+  },
+  {
+    "id": "theater_2650",
+    "day": "26(Jumat)",
+    "show": "19:00 Ingin Bertemu",
+    "link": "https://jkt48.com/theater/schedule/id/2650?lang=id"
+  },
+  {
+    "id": "theater_2653",
+    "day": "27(Sabtu)",
+    "show": "19:00 Pajama Drive",
+    "link": "https://jkt48.com/theater/schedule/id/2653?lang=id"
+  }
+]
