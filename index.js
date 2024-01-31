@@ -61,20 +61,13 @@ const generateEmbed = (title, schedules) => {
     return embed;
 };
 
-// Function to send messages in chunks to handle content length limit
+// Membatasi Text Cuma 2000 kata sekali kirim
 const sendChunkedMessage = async (channel, content) => {
     const chunks = content.match(/[\s\S]{1,1999}/g) || [];
     for (const chunk of chunks) {
         await channel.send(chunk);
     }
 };
-
-client.once('ready', () => {
-    console.log('Bot is ready!');
-    sendToDiscord();
-});
-
-client.login('YOUR_TOKEN_BOT');
 
 const getSchedule = async () => {
     try {
@@ -113,6 +106,14 @@ const getSchedule = async () => {
         console.log('Successfully written next month data to file');
 
         await scrappey.destroySession(session);
+
+        // Setelah file-file dibuat, barulah jalankan bot Discord
+        client.once('ready', () => {
+            console.log('Bot is ready!');
+            sendToDiscord();
+        });
+
+        client.login('YOUR_TOKEN_DISCORD'); // Add your bot token discord
     } catch (error) {
         console.error(error);
     }
