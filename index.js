@@ -2,6 +2,7 @@ const Scrappey = require('scrappey-wrapper');
 const fs = require('fs').promises;
 const { Client, GatewayIntentBits } = require('discord.js');
 const cheerio = require('cheerio');
+const chokidar = require('chokidar');
 
 const apiKey = 'YOUR_API_KEY'; // Replace with your Scrappey API key (https://scrappey.com/)
 const scrappey = new Scrappey(apiKey);
@@ -43,6 +44,22 @@ const sendToDiscord = async () => {
     }
 };
 
+const watchSchedules = () => {
+    const watcher = chokidar.watch(['schedules.json', 'schedules-nextmonth.json'], {
+        persistent: true,
+        awaitWriteFinish: true,
+    });
+
+    watcher
+        .on('change', async () => {
+            console.log('Detected changes in schedule files. Sending update to Discord...');
+            await sendToDiscord(); // Membuat fungsi sendToDiscord agar bisa dipanggil saat terjadi perubahan
+        })
+        .on('error', (error) => {
+            console.error(`Error watching schedule files: ${error}`);
+        });
+};
+
 // Function to generate an embed from schedule data
 const generateEmbed = (title, schedules) => {
     const embed = {
@@ -61,7 +78,34 @@ const generateEmbed = (title, schedules) => {
     return embed;
 };
 
-// Membatasi Text Cuma 2000 kata sekali kirim
+// Fungsi untuk memeriksa pengingat dan mengirim pesan
+const checkReminders = async () => {
+    try {
+        const now = new Date();
+        const schedulesData = await fs.readFile('schedules.json', 'utf-8');
+        const schedules = JSON.parse(schedulesData);
+
+        for (const schedule of schedules) {
+            const showTime = new Date(schedule.showTime); // Menyimpulkan bahwa ada properti 'showTime' dalam data jadwal Anda
+
+            // Sesuaikan kondisi berdasarkan logika Anda untuk mengirim pengingat
+            if (now.getTime() === showTime.getTime()) {
+                const channelName = 'idn-notifier'; // Ganti dengan nama saluran Anda
+                const channel = client.channels.cache.find(ch => ch.name === channelName);
+
+                if (channel) {
+                    await channel.send(`Show ID: ${schedule.id} is starting!`);
+                } else {
+                    console.error(`Error: Channel '${channelName}' not found.`);
+                }
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+// Function to send messages in chunks to handle content length limit
 const sendChunkedMessage = async (channel, content) => {
     const chunks = content.match(/[\s\S]{1,1999}/g) || [];
     for (const chunk of chunks) {
@@ -107,13 +151,15 @@ const getSchedule = async () => {
 
         await scrappey.destroySession(session);
 
+        watchSchedules(); // Memulai pemantauan perubahan pada file-file jadwal
+
         // Setelah file-file dibuat, barulah jalankan bot Discord
         client.once('ready', () => {
             console.log('Bot is ready!');
             sendToDiscord();
         });
 
-        client.login('YOUR_TOKEN_DISCORD'); // Add your bot token discord
+        client.login('YOUR_TOKEN_BOT');
     } catch (error) {
         console.error(error);
     }
