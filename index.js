@@ -20,7 +20,14 @@ const sendToDiscord = async () => {
         const schedules = JSON.parse(schedulesData);
 
         const schedulesNextMonthData = await fs.readFile('schedules-nextmonth.json', 'utf-8');
-        const schedulesNextMonth = JSON.parse(schedulesNextMonthData);
+        let schedulesNextMonth = [];
+
+        if (schedulesNextMonthData) {
+            schedulesNextMonth = JSON.parse(schedulesNextMonthData);
+        } else {
+            // Jika file schedules-nextmonth.json kosong, tambahkan teks "Belum Ada Update Dari Pusat"
+            schedulesNextMonth = [{ id: 'empty', day: 'N/A', show: 'Belum Ada Update Dari Pusat', link: '#' }];
+        }
 
         const channelName = 'idn-notifer'; // Replace with your channel name
         const channel = client.channels.cache.find(ch => ch.name === channelName);
@@ -68,16 +75,23 @@ const generateEmbed = (title, schedules) => {
         fields: [],
     };
 
-    for (const schedule of schedules) {
+    if (schedules.length === 0) {
+        // Jika tidak ada jadwal, tambahkan teks "Belum Ada Update Dari Pusat"
         embed.fields.push({
-            name: `ID: ${schedule.id}`,
-            value: `🗓️ Day: ${schedule.day}\n⏰ Show: ${schedule.show}\nLink: [Schedule Link](${schedule.link})`,
+            name: 'ID: empty',
+            value: '🗓️ Day: N/A\n⏰ Show: Belum Ada Update Dari Pusat\nLink: #',
         });
+    } else {
+        for (const schedule of schedules) {
+            embed.fields.push({
+                name: `ID: ${schedule.id}`,
+                value: `🗓️ Day: ${schedule.day}\n⏰ Show: ${schedule.show}\nLink: [Schedule Link](${schedule.link})`,
+            });
+        }
     }
 
     return embed;
 };
-
 // Fungsi untuk memeriksa pengingat dan mengirim pesan
 const checkReminders = async () => {
     try {
@@ -159,7 +173,7 @@ const getSchedule = async () => {
             sendToDiscord();
         });
 
-        client.login('YOUR_TOKEN_BOT');
+        client.login('TOKEN_BOT');
     } catch (error) {
         console.error(error);
     }
