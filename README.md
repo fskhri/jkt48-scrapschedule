@@ -16,3 +16,7 @@ After you have installed the dependencies, you can run the following command to 
 # Screenshoot
 
 ![image](https://github.com/fskhri/jkt48-scrapschedule/assets/41115223/e928aee7-7009-404d-9d3a-d21d13952eec)
+
+## Update Ver
+![image](https://github.com/fskhri/jkt48-scrapschedule/assets/41115223/845cf64f-2b5d-4842-9264-3a01b11d889d)
+
